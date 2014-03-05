@@ -11,7 +11,7 @@
 #import "MIMedia.h"
 #import "UIImageView+AFNetworking.h"
 
-#define kTextViewWidth 252
+#define kTextViewWidth 258
 
 @interface MITableViewCell()<UITextViewDelegate>
 

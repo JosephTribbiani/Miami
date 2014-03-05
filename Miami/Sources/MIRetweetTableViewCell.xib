@@ -22,10 +22,10 @@
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khx-J9-j1t">
-                        <rect key="frame" x="60" y="38" width="252" height="125"/>
+                        <rect key="frame" x="54" y="38" width="258" height="125"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="252" id="BNt-iO-GDZ"/>
+                            <constraint firstAttribute="width" constant="258" id="BNt-iO-GDZ"/>
                             <constraint firstAttribute="height" constant="125" id="uDR-wZ-UYV"/>
                         </constraints>
                         <attributedString key="attributedText"/>
@@ -64,7 +64,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="jNX-p1-hTs" secondAttribute="trailing" constant="8" id="0D7-5i-qPt"/>
-                    <constraint firstItem="Khx-J9-j1t" firstAttribute="leading" secondItem="HAh-kK-FVS" secondAttribute="leading" constant="60" id="6U1-Q0-K08"/>
+                    <constraint firstItem="Khx-J9-j1t" firstAttribute="leading" secondItem="HAh-kK-FVS" secondAttribute="leading" constant="54" id="6U1-Q0-K08"/>
                     <constraint firstItem="xWZ-eV-5F8" firstAttribute="leading" secondItem="qjj-dK-lzQ" secondAttribute="trailing" constant="10" id="CJW-ae-X7w"/>
                     <constraint firstItem="4qY-7p-80J" firstAttribute="leading" secondItem="HAh-kK-FVS" secondAttribute="leading" constant="4" id="LEs-b6-JRn"/>
                     <constraint firstItem="4qY-7p-80J" firstAttribute="trailing" secondItem="xWZ-eV-5F8" secondAttribute="trailing" id="O3C-mn-Zih"/>

@@ -24,16 +24,20 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v64-eo-nJV">
                         <rect key="frame" x="60" y="4" width="252" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="HD5-ex-Z3h"/>
+                            <constraint firstAttribute="width" constant="252" id="Zcl-Gp-aXt"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvu-mq-QJX">
-                        <rect key="frame" x="60" y="20" width="252" height="86"/>
+                        <rect key="frame" x="54" y="20" width="258" height="86"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="86" id="Z60-0o-9dN"/>
-                            <constraint firstAttribute="width" constant="252" id="Zm0-R6-HZH"/>
+                            <constraint firstAttribute="width" constant="258" id="Zm0-R6-HZH"/>
                         </constraints>
                         <attributedString key="attributedText"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -48,19 +52,21 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="v64-eo-nJV" firstAttribute="leading" secondItem="g7D-Vt-te5" secondAttribute="leading" constant="56" id="0uO-X5-txz"/>
                     <constraint firstAttribute="bottom" secondItem="Qat-NC-59x" secondAttribute="bottom" constant="6" id="2df-cw-BCD"/>
                     <constraint firstItem="Qat-NC-59x" firstAttribute="top" secondItem="Wvu-mq-QJX" secondAttribute="bottom" id="2l7-uy-PoS"/>
-                    <constraint firstItem="Qat-NC-59x" firstAttribute="leading" secondItem="Wvu-mq-QJX" secondAttribute="leading" id="4uE-pq-ysT"/>
+                    <constraint firstItem="Qat-NC-59x" firstAttribute="leading" secondItem="Wvu-mq-QJX" secondAttribute="leading" constant="6" id="4uE-pq-ysT"/>
                     <constraint firstItem="v64-eo-nJV" firstAttribute="leading" secondItem="g7D-Vt-te5" secondAttribute="trailing" constant="8" id="6sT-R4-LqY"/>
                     <constraint firstItem="g7D-Vt-te5" firstAttribute="top" secondItem="0gU-qk-bhS" secondAttribute="top" constant="4" id="BCy-Bl-8Lu"/>
                     <constraint firstItem="Wvu-mq-QJX" firstAttribute="top" secondItem="v64-eo-nJV" secondAttribute="bottom" constant="-1" id="FRR-6w-9EB"/>
                     <constraint firstAttribute="trailing" secondItem="Wvu-mq-QJX" secondAttribute="trailing" constant="8" id="FZs-fI-ySq"/>
                     <constraint firstItem="v64-eo-nJV" firstAttribute="top" secondItem="0gU-qk-bhS" secondAttribute="top" constant="4" id="FnP-9I-h5E"/>
                     <constraint firstItem="Qat-NC-59x" firstAttribute="leading" secondItem="0gU-qk-bhS" secondAttribute="leading" constant="60" id="My5-yJ-nl7"/>
+                    <constraint firstItem="v64-eo-nJV" firstAttribute="trailing" secondItem="Wvu-mq-QJX" secondAttribute="trailing" id="agO-Mq-Z1x"/>
                     <constraint firstAttribute="trailing" secondItem="Qat-NC-59x" secondAttribute="trailing" constant="8" id="dfx-rN-OU7"/>
                     <constraint firstAttribute="trailing" secondItem="v64-eo-nJV" secondAttribute="trailing" constant="8" id="lmb-K1-aFB"/>
                     <constraint firstItem="Qat-NC-59x" firstAttribute="trailing" secondItem="Wvu-mq-QJX" secondAttribute="trailing" id="nQd-oi-SjB"/>
-                    <constraint firstItem="Wvu-mq-QJX" firstAttribute="leading" secondItem="0gU-qk-bhS" secondAttribute="leading" constant="60" id="tYW-eL-1CI"/>
+                    <constraint firstItem="Wvu-mq-QJX" firstAttribute="leading" secondItem="0gU-qk-bhS" secondAttribute="leading" constant="54" id="tYW-eL-1CI"/>
                     <constraint firstItem="g7D-Vt-te5" firstAttribute="leading" secondItem="0gU-qk-bhS" secondAttribute="leading" constant="4" id="wV6-E3-r0v"/>
                 </constraints>
             </tableViewCellContentView>
