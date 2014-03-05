@@ -53,12 +53,10 @@
                     <constraint firstItem="Qat-NC-59x" firstAttribute="leading" secondItem="Wvu-mq-QJX" secondAttribute="leading" id="4uE-pq-ysT"/>
                     <constraint firstItem="v64-eo-nJV" firstAttribute="leading" secondItem="g7D-Vt-te5" secondAttribute="trailing" constant="8" id="6sT-R4-LqY"/>
                     <constraint firstItem="g7D-Vt-te5" firstAttribute="top" secondItem="0gU-qk-bhS" secondAttribute="top" constant="4" id="BCy-Bl-8Lu"/>
-                    <constraint firstItem="v64-eo-nJV" firstAttribute="top" secondItem="g7D-Vt-te5" secondAttribute="top" id="DUP-sS-Kfc"/>
                     <constraint firstItem="Wvu-mq-QJX" firstAttribute="top" secondItem="v64-eo-nJV" secondAttribute="bottom" constant="-1" id="FRR-6w-9EB"/>
                     <constraint firstAttribute="trailing" secondItem="Wvu-mq-QJX" secondAttribute="trailing" constant="8" id="FZs-fI-ySq"/>
                     <constraint firstItem="v64-eo-nJV" firstAttribute="top" secondItem="0gU-qk-bhS" secondAttribute="top" constant="4" id="FnP-9I-h5E"/>
                     <constraint firstItem="Qat-NC-59x" firstAttribute="leading" secondItem="0gU-qk-bhS" secondAttribute="leading" constant="60" id="My5-yJ-nl7"/>
-                    <constraint firstItem="Wvu-mq-QJX" firstAttribute="leading" secondItem="g7D-Vt-te5" secondAttribute="trailing" constant="8" id="TID-dK-G4A"/>
                     <constraint firstAttribute="trailing" secondItem="Qat-NC-59x" secondAttribute="trailing" constant="8" id="dfx-rN-OU7"/>
                     <constraint firstAttribute="trailing" secondItem="v64-eo-nJV" secondAttribute="trailing" constant="8" id="lmb-K1-aFB"/>
                     <constraint firstItem="Qat-NC-59x" firstAttribute="trailing" secondItem="Wvu-mq-QJX" secondAttribute="trailing" id="nQd-oi-SjB"/>

@@ -42,7 +42,12 @@
     self.textView.scrollEnabled = NO;
     self.textView.editable = NO;
     self.textView.selectable = YES;
-//    self.textView.textContainer.lineFragmentPadding = 0;
+    
+    [self.mediaImageView setClipsToBounds:YES];
+    self.mediaImageView.layer.cornerRadius = 5;
+    self.mediaImageView.layer.masksToBounds = YES;
+    
+    self.mediaImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 #pragma mark -

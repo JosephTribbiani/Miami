@@ -52,7 +52,7 @@
 {
     NSAttributedString* attributedText = [[self class] attributedStringForText:tweet.text links:tweet.links];
     CGFloat height = [MITableViewCell textViewHeightForAttributedText:attributedText];
-    height = height + 22 + (((MIMedia*)[tweet.media anyObject]).url != nil ? 150 : 0);
+    height = height + 25 + (((MIMedia*)[tweet.media anyObject]).url != nil ? 150 : 0);
     return height > 60 ? height : 60;
 }
 
