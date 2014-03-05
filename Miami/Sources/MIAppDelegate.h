@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class  MIModel;
+
 @interface MIAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow* window;
+@property (strong, nonatomic) MIModel* dataModel;
+
 
 @end

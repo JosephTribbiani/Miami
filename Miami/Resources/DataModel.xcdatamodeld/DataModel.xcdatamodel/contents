@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MILink" representedClassName="MILink" syncable="YES">
+        <attribute name="actualURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placeholderURL" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MIMedia" representedClassName="MIMedia" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MITweet" representedClassName="MITweet" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isRetweeted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="retweetScreenName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="retweetUserName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="retweetUserPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userScreenName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MILink" syncable="YES"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MIMedia" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MILink" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MITweet" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MIMedia" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

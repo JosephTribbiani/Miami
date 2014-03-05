@@ -7,12 +7,29 @@
 //
 
 #import "MIAppDelegate.h"
+#import "AFNetworking.h"
+
+#import "MIModel.h"
+#import "MITweet.h"
 
 @implementation MIAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.dataModel = [MIModel new];
+    
+    NSFetchRequest *request = [NSFetchRequest new];
+    request.fetchLimit = 1;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
+
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MITweet" inManagedObjectContext:self.dataModel.managedObjectContext];
+    request.entity = entity;
+
+    MITweet* lastTweet = (MITweet *)[[self.dataModel.managedObjectContext executeFetchRequest:request error:NULL]lastObject];
+    NSLog(@"lastTweetid:%@",lastTweet.unique);
+  
+    [self.dataModel loadTweetsSinceId:lastTweet.unique];
+    
     return YES;
 }
 							
