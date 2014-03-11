@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78A5BCA218CC8CFE00A34B46 /* MIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A5BCA118CC8CFE00A34B46 /* MIActivityView.m */; };
+		78A5BCA618CC94F000A34B46 /* arrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = 78A5BCA518CC94F000A34B46 /* arrow.gif */; };
+		78A5BCA818CC966000A34B46 /* arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78A5BCA718CC966000A34B46 /* arrow.jpg */; };
 		78AC45D318C3D128005267D8 /* MITweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AC45D218C3D128005267D8 /* MITweetTableViewCell.xib */; };
 		78AC45D518C3D190005267D8 /* MIRetweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AC45D418C3D190005267D8 /* MIRetweetTableViewCell.xib */; };
 		D80568EE18C7222B00219FA2 /* MIMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D80568ED18C7222B00219FA2 /* MIMedia.m */; };
@@ -66,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78A5BCA018CC8CFE00A34B46 /* MIActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIActivityView.h; path = Sources/MIActivityView.h; sourceTree = "<group>"; };
+		78A5BCA118CC8CFE00A34B46 /* MIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MIActivityView.m; path = Sources/MIActivityView.m; sourceTree = "<group>"; };
+		78A5BCA518CC94F000A34B46 /* arrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = arrow.gif; path = Resources/arrow.gif; sourceTree = "<group>"; };
+		78A5BCA718CC966000A34B46 /* arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow.jpg; path = Resources/arrow.jpg; sourceTree = "<group>"; };
 		78AC45D218C3D128005267D8 /* MITweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MITweetTableViewCell.xib; path = Sources/MITweetTableViewCell.xib; sourceTree = "<group>"; };
 		78AC45D418C3D190005267D8 /* MIRetweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MIRetweetTableViewCell.xib; path = Sources/MIRetweetTableViewCell.xib; sourceTree = "<group>"; };
 		D80568EC18C7222B00219FA2 /* MIMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMedia.h; sourceTree = "<group>"; };
@@ -220,6 +227,8 @@
 				D8A8AD6D18C63A570080E552 /* MITweetTableViewCell.m */,
 				D8A8AD7218C642470080E552 /* MIRetweetTableViewCell.h */,
 				D8A8AD7318C642470080E552 /* MIRetweetTableViewCell.m */,
+				78A5BCA018CC8CFE00A34B46 /* MIActivityView.h */,
+				78A5BCA118CC8CFE00A34B46 /* MIActivityView.m */,
 			);
 			name = View;
 			path = ..;
@@ -372,6 +381,8 @@
 		D8A8AD7518C6567C0080E552 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				78A5BCA718CC966000A34B46 /* arrow.jpg */,
+				78A5BCA518CC94F000A34B46 /* arrow.gif */,
 				D82603FC18C49B810059E2D5 /* placeholder.jpg */,
 				D826040418C4DF5D0059E2D5 /* placeholder2.jpg */,
 				D8828F5B18BE2AE7009D0713 /* Images.xcassets */,
@@ -459,6 +470,8 @@
 				D8828F5C18BE2AE7009D0713 /* Images.xcassets in Resources */,
 				D82603FD18C49B810059E2D5 /* placeholder.jpg in Resources */,
 				78AC45D518C3D190005267D8 /* MIRetweetTableViewCell.xib in Resources */,
+				78A5BCA618CC94F000A34B46 /* arrow.gif in Resources */,
+				78A5BCA818CC966000A34B46 /* arrow.jpg in Resources */,
 				D826040518C4DF5D0059E2D5 /* placeholder2.jpg in Resources */,
 				78AC45D318C3D128005267D8 /* MITweetTableViewCell.xib in Resources */,
 				D8828F4E18BE2AE7009D0713 /* InfoPlist.strings in Resources */,
@@ -505,6 +518,7 @@
 				D8828FA718BE4193009D0713 /* UIAlertView+AFNetworking.m in Sources */,
 				D8828FA218BE4193009D0713 /* AFURLRequestSerialization.m in Sources */,
 				D8828FA518BE4193009D0713 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				78A5BCA218CC8CFE00A34B46 /* MIActivityView.m in Sources */,
 				D844753018BF827200EBBCD5 /* MIRefreshingTableView.m in Sources */,
 				D8828FAB18BE4193009D0713 /* UIWebView+AFNetworking.m in Sources */,
 				D80568EE18C7222B00219FA2 /* MIMedia.m in Sources */,

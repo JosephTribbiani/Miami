@@ -80,7 +80,6 @@ NSString* const kMIBlogerScreenName = @"euromaidan";
 
 - (NSString*)accesToken
 {
-    _accessToken = @"AAAAAAAAAAAAAAAAAAAAADBIWQAAAAAAb%2F9%2BSTHJzXHyvgJqZrTNmD%2F8aPk%3DIQCG6V7IQVCtesGCChJlodc64ZHHQU3Nz2nkbF68cjaR1vb2rT";
     if (nil == _accessToken)
     {
         __block BOOL isTokenRequestOperationCompleted = NO;

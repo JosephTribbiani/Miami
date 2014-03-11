@@ -11,11 +11,19 @@
 #import "MITwitterManager.h"
 #import "MITweet.h"
 
+@protocol MIModelDelegate <NSObject>
+
+- (void)modelDidUpdate;
+
+@end
+
 @interface MIModel : NSObject
 
-@property(nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
-@property(nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property(nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, weak) id<MIModelDelegate> delegate;
 
 - (NSURL*)dataStoreURL;
 

@@ -91,6 +91,7 @@
         {
             [self.managedObjectContext save:NULL];
         }
+        [self.delegate modelDidUpdate];
     }];
     
 }

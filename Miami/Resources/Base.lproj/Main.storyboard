@@ -8,7 +8,7 @@
         <scene sceneID="maD-3h-sVt">
             <objects>
                 <tableViewController id="U1j-yB-nNw" customClass="MICoreDataTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="22" sectionFooterHeight="22" id="S8L-g4-Iqg" customClass="MIRefreshingTableView">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="22" sectionFooterHeight="22" id="S8L-g4-Iqg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,7 +37,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Swm-rQ-bzc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0F6-vj-C1X" sceneMemberID="viewController">
+                <navigationController id="0F6-vj-C1X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wqS-A8-cfK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

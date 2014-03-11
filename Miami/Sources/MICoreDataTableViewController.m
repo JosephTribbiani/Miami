@@ -5,43 +5,81 @@
 //  Created by Igor Bogatchuk on 2/26/14.
 //  Copyright (c) 2014 Igor Bogatchuk. All rights reserved.
 //
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #import "MICoreDataTableViewController.h"
 #import "MITweet.h"
 #import "MIMedia.h"
 #import "MIModel.h"
 #import "MIAppDelegate.h"
-
-#import "AFNetworking.h"
 #import "UIKit+AFNetworking.h"
-
-#import "MIRefreshingTableView.h"
 #import "MITweetTableViewCell.h"
 #import "MIRetweetTableViewCell.h"
-#import "MITableViewCell.h"
+#import "MIActivityView.h"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define REFRESH_THRESHOLD 60
+#define ACTIVITY_VIEW_HEIGHT 60
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 NSString* const kTweetCellIdentifier = @"kMITweetCellIdentifier";
 NSString* const kRetweetCellIdentifier = @"kMIRetweetCellIdentifier";
 
-@interface MICoreDataTableViewController() <UIScrollViewDelegate>
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface MICoreDataTableViewController() <UIScrollViewDelegate, MIModelDelegate>
 {
     NSFetchedResultsController* _fetchedResultsController;
+    MIActivityView* _activityView;
 }
 
-@property (nonatomic) BOOL beganUpdates;
+@property (nonatomic, strong, readonly) MIActivityView* activityView;
+@property (nonatomic, strong) MIModel *model;
+@property BOOL isUpdating;
 
 @end
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 @implementation MICoreDataTableViewController
 
-#pragma mark - Properties
+- (void)viewDidLoad
+{
+	[self.tableView registerNib:[UINib nibWithNibName:@"MIRetweetTableViewCell" bundle:nil] forCellReuseIdentifier:kRetweetCellIdentifier];
+	[self.tableView registerNib:[UINib nibWithNibName:@"MITweetTableViewCell" bundle:nil] forCellReuseIdentifier:kTweetCellIdentifier];
+    
+    self.managedObjectContext = ((MIAppDelegate*)[UIApplication sharedApplication].delegate).dataModel.managedObjectContext;
+    
+    [self.tableView addSubview:self.activityView];
+}
 
-@synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize beganUpdates = _beganUpdates;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
 
-#pragma mark - 
+#pragma mark -
+
+- (MIActivityView*)activityView
+{
+	if (nil == _activityView)
+	{
+		_activityView = [[MIActivityView alloc] initWithFrame:CGRectMake(0, -ACTIVITY_VIEW_HEIGHT, self.tableView.frame.size.width, ACTIVITY_VIEW_HEIGHT)];
+	}
+	return _activityView;
+}
+
+- (MIModel*)model
+{
+    if (nil == _model)
+    {
+        _model = ((MIAppDelegate*)[UIApplication sharedApplication].delegate).dataModel;
+        _model.delegate = self;
+    }
+    return _model;
+}
 
 - (NSFetchedResultsController*)fetchedResultsController
 {
@@ -61,24 +99,6 @@ NSString* const kRetweetCellIdentifier = @"kMIRetweetCellIdentifier";
     return _fetchedResultsController;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
-#pragma mark - Fetching
-
-- (void)performFetch
-{
-    if (self.fetchedResultsController)
-    {
-        NSError *error;
-        [self.fetchedResultsController performFetch:&error];
-        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-    }
-    [self.tableView reloadData];
-}
-
 - (void)setFetchedResultsController:(NSFetchedResultsController *)newfrc
 {
     NSFetchedResultsController *oldfrc = _fetchedResultsController;
@@ -94,6 +114,17 @@ NSString* const kRetweetCellIdentifier = @"kMIRetweetCellIdentifier";
             [self.tableView reloadData];
         }
     }
+}
+
+- (void)performFetch
+{
+    if (self.fetchedResultsController)
+    {
+        NSError *error;
+        [self.fetchedResultsController performFetch:&error];
+        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -212,29 +243,45 @@ NSString* const kRetweetCellIdentifier = @"kMIRetweetCellIdentifier";
     [self.tableView endUpdates];
 }
 
-- (void)viewDidLoad
-{
-	[self.tableView registerNib:[UINib nibWithNibName:@"MIRetweetTableViewCell" bundle:nil] forCellReuseIdentifier:kRetweetCellIdentifier];
-	[self.tableView registerNib:[UINib nibWithNibName:@"MITweetTableViewCell" bundle:nil] forCellReuseIdentifier:kTweetCellIdentifier];
-
-    self.managedObjectContext = ((MIAppDelegate*)[UIApplication sharedApplication].delegate).dataModel.managedObjectContext;
-}
-
-#pragma mark -
+#pragma mark - ScrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
 	CGFloat contentOffset = scrollView.contentOffset.y;
-	if (contentOffset < - REFRESH_THRESHOLD)
+	if (contentOffset < - REFRESH_THRESHOLD * 2 && self.isUpdating == NO)
 	{
-		[(MIRefreshingTableView *)self.tableView startRefreshing:^
-		{
-			[self refreshTableView];
-		}
-		withCompletionHanler:^
-		{
-		}];
+        self.isUpdating = YES;
+		[self.activityView startAnimating];
+        [UIView animateWithDuration:0.1 animations:^{
+            UIEdgeInsets insets = scrollView.contentInset;
+            insets.top += ACTIVITY_VIEW_HEIGHT;
+            [scrollView setContentInset:insets];
+        } completion:^(BOOL finished) {
+            [self refreshTableView];
+        }];
 	}
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    BOOL isNavigationBarVisible = !self.navigationController.navigationBarHidden;
+    
+	CGFloat contentOffset = scrollView.contentOffset.y;
+    
+    if (contentOffset > (isNavigationBarVisible ? - 65 : 0))
+    {
+        [self.activityView stopAnimating];
+    }
+    
+	if (contentOffset < (isNavigationBarVisible ? - REFRESH_THRESHOLD - 65 : - REFRESH_THRESHOLD))
+	{
+		[self.activityView flipReverse];
+	}
+    
+    if (contentOffset < (isNavigationBarVisible ? - REFRESH_THRESHOLD : 0) && contentOffset > (isNavigationBarVisible ? - REFRESH_THRESHOLD - 65 : -REFRESH_THRESHOLD))
+    {
+        [self.activityView flipDirect];
+    }
 }
 
 - (void)refreshTableView
@@ -242,15 +289,26 @@ NSString* const kRetweetCellIdentifier = @"kMIRetweetCellIdentifier";
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	request.fetchLimit = 1;
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
-	MIModel *model = ((MIAppDelegate*)[UIApplication sharedApplication].delegate).dataModel;
 	
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"MITweet" inManagedObjectContext:model.managedObjectContext];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"MITweet" inManagedObjectContext:self.model.managedObjectContext];
 	request.entity = entity;
 	
-	MITweet* lastTweet = (MITweet*)[[model.managedObjectContext executeFetchRequest:request error:NULL]lastObject];
-	NSLog(@"lastTweetid:%@",lastTweet.unique);
-	
-	[model loadTweetsSinceId:lastTweet.unique];
+	MITweet* lastTweet = (MITweet*)[[self.model.managedObjectContext executeFetchRequest:request error:NULL]lastObject];
+	[self.model loadTweetsSinceId:lastTweet.unique];
+}
+
+#pragma mark - ModelDelegate
+
+- (void)modelDidUpdate
+{
+    [self.activityView stopAnimating];
+    [UIView animateWithDuration:0.1 animations:^{
+		UIEdgeInsets insets = self.tableView.contentInset;
+        insets.top -= ACTIVITY_VIEW_HEIGHT;
+        [self.tableView setContentInset:insets];
+    } completion:^(BOOL finished) {
+    	self.isUpdating = NO;
+    }];
 }
 
 @end
