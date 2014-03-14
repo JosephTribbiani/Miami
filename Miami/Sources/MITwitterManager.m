@@ -112,7 +112,7 @@ NSString* const kMIBlogerScreenName = @"euromaidan";
         
         while (isTokenRequestOperationCompleted == NO)
         {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         }
     }
     return _accessToken;
